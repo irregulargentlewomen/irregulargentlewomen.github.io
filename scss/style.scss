@@ -1,0 +1,334 @@
+@import "compass";
+/* Palette: http://www.colourlovers.com/palette/3149470/Irregular_Peacock */
+
+@font-face {
+    font-family: 'Upper East Side';
+    src: url('http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.eot');
+    src: url('http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.woff') format('woff'),
+         url('http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.ttf') format('truetype'),
+         url('http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.svg#uppereastsideregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Junction';
+    src: url('http://www.columbia.edu/~eg2234/Junction/Junction-webfont.eot');
+    src: url('http://www.columbia.edu/~eg2234/Junction/Junction-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://www.columbia.edu/~eg2234/Junction/Junction-webfont.woff') format('woff'),
+         url('http://www.columbia.edu/~eg2234/Junction/Junction-webfont.ttf') format('truetype'),
+         url('http://www.columbia.edu/~eg2234/Junction/Junction-webfont.svg#junction_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* apply a natural box layout model to all elements */
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+@mixin clearfix() {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+body {
+  font-family: 'Junction', 'Helvetica Neue', Helvetica, sans-serif;
+  background-color: #ccc;
+  background-image: url("http://www.columbia.edu/~eg2234/images/crossword.png");
+  color: #505050;
+  font-size: 100%;
+  line-height: 1.4;
+  margin: 0 auto;
+}
+img {  
+  max-width: 100%;
+}
+header,
+section,
+footer {
+  margin: 0 auto;
+  max-width: 80%;
+}
+a, a:link, a:hover, a:visited {
+  color: inherit;
+  text-decoration: none;
+  transition: all .15s ease;
+}
+p a,
+p a:link,
+li a,
+li a:link{
+  border-bottom: solid 1px #505050;
+}
+p a:hover,
+p a:focus,
+li a:hover,
+li a:focus{
+  border-bottom-color: #87176B;
+}
+h1, h2, h3 {   font-family: 'Upper East Side', 'Helvetica Neue', Helvetica, sans; margin: 0; }
+h1 { font-size: 3.8em; text-align: center;}
+h2 { color: #113569; font-size: 2.6em; line-height: 1.1; }
+h3 {}
+i, em {
+  font-style: italic;
+}
+bold, strong {
+  font-weight: 800;
+}
+p, li {
+  line-height: 1.6;
+}
+
+/* Banner */
+@media screen and (min-width:800px){
+.banner {
+  font-family: 'Upper East Side', 'Helvetica Neue', Helvetica, sans;
+  position: relative;
+  z-index: 1;
+  margin: 80px auto 0;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.banner .line {
+  margin: 0 0 10px;
+  width: 100%;
+  height: 78px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  text-align: center;
+  font-size: 3em;
+  line-height: 78px;
+  transform: skew(0, -15deg);
+}
+/* shame.css */
+.banner h1 { font-size: inherit; }
+
+.banner .line:after,
+.banner .line:first-child:before {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  z-index: -1;
+  display: block;
+  width: 330px;
+  height: 78px;
+  border-radius: 4px;
+  background: rgb(180,180,180);
+  background: rgba(180,180,180,.7);
+  content: '';
+  transform: skew(0, 15deg);
+}
+
+.banner .line:first-child:before {
+  top: -10px;
+  right: 0;
+  left: auto;
+}
+
+.banner .line:first-child:before,
+.banner .line:last-child:after {
+  width: 0;
+  height: 0;
+  border-width: 38px;
+  border-style: solid;
+  border-color: rgb(180,180,180) rgb(180,180,180) transparent transparent;
+  border-color: rgba(180,180,180,0.8) rgba(180,180,180,0.8) transparent transparent;
+  background: transparent;
+}
+
+.banner .line:last-child:after {
+  top: 12px;
+    border-color: transparent transparent rgb(180,180,180) rgb(180,180,180);
+border-color: transparent transparent rgba(180,180,180,0.8) rgba(180,180,180,0.8);
+}
+
+.banner span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background: rgb(252,252,252);
+  color: rgb(255,255,255);
+  color: rgba(255,255,255,0.8);
+  font-variant: small-caps;
+  letter-spacing: .05em;
+  text-shadow: 1px 1px 0 #505050;
+  transition: all .7s ease;
+}
+.banner .title span {
+  color: #87176B;
+}
+.banner .tagline span {
+  color: rgb(2,119,98);
+}
+.banner .navigation span {
+    text-shadow: 0 0 0 #fff;
+  }
+.banner .navigation a {
+  color: #fff;
+  text-shadow: 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569;
+}
+.banner span a:hover {
+  color: rgb(17,53,105);
+}
+}
+
+/* Mobile banner */
+@media screen and (max-width:799px) {
+  .banner {
+    @include clearfix();
+    position: relative;
+  }
+  .banner .line {
+    background-color: #113569;
+    color: #fff;
+    text-align: center;
+    box-shadow: -10rem 0 0 #113569, 10rem 0 0 #113569;
+  }
+  .banner h1 {
+    font-size: 2em;
+  }
+  .banner .tagline span {
+    font-style: italic;
+  }
+  .banner .navigation a,
+  .banner .author a{
+    color: #87176B;
+    padding: 0 10px;
+    /*text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.4);*/
+    -webkit-transition: all 300ms ease;
+-moz-transition: all 300ms ease;
+-ms-transition: all 300ms ease;
+-o-transition: all 300ms ease;
+transition: all 300ms ease;
+    &:hover {
+      color: #fff;
+      text-shadow: 0 0 0 transparent;
+    }
+  }
+}
+
+
+/* portfolio */
+.portfolio {
+  @include clearfix();
+  margin: 0 auto;
+  padding-top: 80px;
+  position: relative;
+  z-index: 5;
+}
+.portfolio h1 {
+  color: #87176B;
+  text-shadow: 0 1px 1px #fff;
+}
+.portfolio .media {
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+}
+.portfolio .media:nth-child(3n+1){
+  margin-right: 0;
+}
+.portfolio .media-figure {
+  width: 100%;
+  border: 10px double #027762;
+  transition: all 1.5s ease;
+  display: block;
+}
+.portfolio .media-figure img {
+  transition: all 1.5s ease;
+  padding: 5px 5px 0;
+}
+.portfolio .media-figure:hover {
+  background-color: #113569;
+}
+.portfolio .media-body h2 {
+  text-align: center;
+}
+.portfolio .media-body p {
+  margin-top: 0.5em;
+  padding-right: 1em;
+}
+.portfolio .date {
+  font-variant: small-caps;
+}
+
+/* Responsive stuff for the portfolio */
+@media screen and (max-width:799px) {
+  .portfolio .media {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+  .portfolio .media-figure {
+    float: left;
+    margin-right: 10px;
+    width: 40%;
+  }
+  
+}
+
+/* Contact form */
+#contact fieldset {
+  border-width: 0;
+}
+/* shame.css */
+#contact select { width: auto; padding-right: 15px; }
+#contact input {
+  background-color: transparent;
+  border-color: #505050;
+  border-width: 0 0 1px 0;
+  display: inline-block;
+  font-size: inherit;
+  width: auto;
+}
+#contact textarea {
+  width: 100%;
+  font-size: 1.2em;
+}
+#contact input[type=submit] {
+  border: solid 1px #505050;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px 3px rgba(50,50,50,.5);
+  color: #000;
+  float: right;
+}
+#contact input[type=submit]:hover,
+#contact input[type=submit]:focus,
+#contact input[type=submit]:active {
+  border-color: rgb(135,23,107);
+  border-color: rgba(135,23,107,.5);
+box-shadow: 3px 3px 3px 2px rgba(135,23,107,.2);
+  color: #87176B;
+  color: rgba(135,23,107,.9);
+  cursor: pointer;
+}
+
+textarea::-webkit-input-placeholder {
+   color: #87176B;
+}
+textarea::-moz-placeholder {  /* Firefox 19+ */
+   color: #87176B;  
+}
+textarea:-ms-input-placeholder {  
+   color: #87176B;  
+}
+
+footer {
+  opacity: 0.85;
+  padding-top: 1em;
+  text-align: center;
+}

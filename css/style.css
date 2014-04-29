@@ -1,169 +1,455 @@
-@import url(http://fonts.googleapis.com/css?family=Josefin+Slab:600);
-
-/* Micro clearfix via Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
-/* For modern browsers */
-.cf:before,
-.cf:after {
-    content:"";
-    display:table;
+/* Palette: http://www.colourlovers.com/palette/3149470/Irregular_Peacock */
+@font-face {
+  font-family: 'Upper East Side';
+  src: url("http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.eot");
+  src: url("http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.eot?#iefix") format("embedded-opentype"), url("http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.woff") format("woff"), url("http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.ttf") format("truetype"), url("http://www.columbia.edu/~eg2234/UES/UpperEastSide-webfont.svg#uppereastsideregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.cf:after {
-    clear:both;
+@font-face {
+  font-family: 'Junction';
+  src: url("http://www.columbia.edu/~eg2234/Junction/Junction-webfont.eot");
+  src: url("http://www.columbia.edu/~eg2234/Junction/Junction-webfont.eot?#iefix") format("embedded-opentype"), url("http://www.columbia.edu/~eg2234/Junction/Junction-webfont.woff") format("woff"), url("http://www.columbia.edu/~eg2234/Junction/Junction-webfont.ttf") format("truetype"), url("http://www.columbia.edu/~eg2234/Junction/Junction-webfont.svg#junction_regularregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* Micro clearfix for IE 6/7 (trigger hasLayout) */
-.cf {
-    zoom:1;
+/* apply a natural box layout model to all elements */
+/* line 26, ../scss/style.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html {
-	font-size: 62.5%;
-}
-
-body {
-	font-family: "Josefin Slab", "Helvetica Neue", "Helvetica", Arial, sans;
-	font-size: 1.8em;
-	font-size: 1.8rem;
-	margin: 0 auto;
-	padding: 0 5%;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-variant: small-caps;
-	font-weight: normal;
-	text-align: center;
-}
-
-a,
-a:link {
-	border-bottom: solid 1px transparent;
-	color: #900;
-	text-decoration: none;
-}
-
-a:hover,
-a:focus {
-	border-bottom: solid 1px #900;
-}
-
-
-/* Timeline adapted from http://codepen.io/christian-fei/pen/BJily */
-.timeline-border {
-  margin: 50px auto;
-  max-width: 700px;
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+/* line 31, ../scss/style.scss */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
   overflow: hidden;
-  height: auto;
-  position: relative;
-  /* 
-    elements 1,(2),3,(4), etc.
-    elements in brackets inherit these properties, some are overridden below (2n)
-    beginning at 0
-  */
-}
-
-.timeline-border .line {
+  padding: 0;
   position: absolute;
   width: 1px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEElEQVQIW2NMTEz8z8gABAAPKwIlXWq1kgAAAABJRU5ErkJggg==);
-  height: 100%;
-  left: 49.9%;
-  z-index: 5;
 }
-.timeline-border .year {
-  position: relative;
-  float: left;
-  clear: both;
-  margin: 75px auto;
-  text-align: center;
-  width: 100%;
-  z-index: 10;
-  color: white;
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+/* line 34, ../scss/style.scss */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
-.timeline-border .year.first {
-  margin-top: 0px !important;
-}
-.timeline-border .year span {
-  border-radius: 50px;
-  background: #505050;
-  font-size: 3em;
-  max-width: 200px;
-  display: block;
+
+/* line 47, ../scss/style.scss */
+body {
+  font-family: 'Junction', 'Helvetica Neue', Helvetica, sans-serif;
+  background-color: #ccc;
+  background-image: url("http://www.columbia.edu/~eg2234/images/crossword.png");
+  color: #505050;
+  font-size: 100%;
+  line-height: 1.4;
   margin: 0 auto;
 }
-.timeline-border .event {
-  position: relative;
-  text-align: center;
-  float: right;
-  clear: right;
-  width: 45%;
-  margin: 10px 2.5%;
-  /* I want 40%, and not 45%! */
-  box-sizing: border-box;
-  border-radius: 5px;
-  list-style-type: none;
-  display: block;
-  padding: .4em;
-  background: white;
-  z-index: 15;
-  color: #4d4d4d;
-  border: 1px solid #9d9d9d;
-  text-decoration: none;
-  -webkit-transition: background .15s linear;
-  -moz-transition: background .15s linear;
-  -ms-transition: background .15s linear;
-  -o-transition: background .15s linear;
-  transition: background .15s linear;
-}
-.timeline-border .event.featured {
-  width: 95% !important;
-  background: #e8e8e8;
-}
-.timeline-border .event.featured:after, .timeline-border .event.featured:before {
-  display: none;
-}
-@media all and (max-width: 600px) {
-  .timeline-border .event {
-    width: 85%;
-  }
-}
-.timeline-border .event.offset-first {
-  margin-top: -1.5em;
-}
-.timeline-border .event img {
-  margin-top: 10px;
+
+/* line 56, ../scss/style.scss */
+img {
   max-width: 100%;
 }
-.timeline-border .event:hover {
-  background: #6a6a6a;
-  color: white;
+
+/* line 61, ../scss/style.scss */
+header,
+section,
+footer {
+  margin: 0 auto;
+  max-width: 80%;
 }
-.timeline-border .event:hover a {
-  color: white;
+
+/* line 65, ../scss/style.scss */
+a, a:link, a:hover, a:visited {
+  color: inherit;
+  text-decoration: none;
+  transition: all .15s ease;
 }
-.timeline-border .event:hover:after {
-  background: #505050;
+
+/* line 73, ../scss/style.scss */
+p a,
+p a:link,
+li a,
+li a:link {
+  border-bottom: solid 1px #505050;
 }
-.timeline-border .event:nth-child(2n) {
-  float: left;
-  clear: left;
+
+/* line 79, ../scss/style.scss */
+p a:hover,
+p a:focus,
+li a:hover,
+li a:focus {
+  border-bottom-color: #87176B;
 }
-@media all and (min-width: 650px) {
-  .timeline-border .event:after {
-    display: block;
-    content: ' ';
-    height: 6px;
-    width: 6px;
-    background: #9d9d9d;
-    border-radius: 50%;
+
+/* line 82, ../scss/style.scss */
+h1, h2, h3 {
+  font-family: 'Upper East Side', 'Helvetica Neue', Helvetica, sans;
+  margin: 0;
+}
+
+/* line 83, ../scss/style.scss */
+h1 {
+  font-size: 3.8em;
+  text-align: center;
+}
+
+/* line 84, ../scss/style.scss */
+h2 {
+  color: #113569;
+  font-size: 2.6em;
+  line-height: 1.1;
+}
+
+/* line 86, ../scss/style.scss */
+i, em {
+  font-style: italic;
+}
+
+/* line 89, ../scss/style.scss */
+bold, strong {
+  font-weight: 800;
+}
+
+/* line 92, ../scss/style.scss */
+p, li {
+  line-height: 1.6;
+}
+
+/* Banner */
+@media screen and (min-width: 800px) {
+  /* line 98, ../scss/style.scss */
+  .banner {
+    font-family: 'Upper East Side', 'Helvetica Neue', Helvetica, sans;
+    position: relative;
+    z-index: 1;
+    margin: 80px auto 0;
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  /* line 107, ../scss/style.scss */
+  .banner .line {
+    margin: 0 0 10px;
+    width: 100%;
+    height: 78px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 3em;
+    line-height: 78px;
+    transform: skew(0, -15deg);
+  }
+
+  /* shame.css */
+  /* line 118, ../scss/style.scss */
+  .banner h1 {
+    font-size: inherit;
+  }
+
+  /* line 121, ../scss/style.scss */
+  .banner .line:after,
+  .banner .line:first-child:before {
     position: absolute;
-    left: -5%;
-    top: 1.5em;
-    border: 2px solid white;
+    top: 44px;
+    left: 0;
+    z-index: -1;
+    display: block;
+    width: 330px;
+    height: 78px;
+    border-radius: 4px;
+    background: #b4b4b4;
+    background: rgba(180, 180, 180, 0.7);
+    content: '';
+    transform: skew(0, 15deg);
+  }
+
+  /* line 136, ../scss/style.scss */
+  .banner .line:first-child:before {
+    top: -10px;
+    right: 0;
+    left: auto;
+  }
+
+  /* line 143, ../scss/style.scss */
+  .banner .line:first-child:before,
+  .banner .line:last-child:after {
+    width: 0;
+    height: 0;
+    border-width: 38px;
+    border-style: solid;
+    border-color: #b4b4b4 #b4b4b4 transparent transparent;
+    border-color: rgba(180, 180, 180, 0.8) rgba(180, 180, 180, 0.8) transparent transparent;
+    background: transparent;
+  }
+
+  /* line 153, ../scss/style.scss */
+  .banner .line:last-child:after {
+    top: 12px;
+    border-color: transparent transparent #b4b4b4 #b4b4b4;
+    border-color: transparent transparent rgba(180, 180, 180, 0.8) rgba(180, 180, 180, 0.8);
+  }
+
+  /* line 159, ../scss/style.scss */
+  .banner span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: #fcfcfc;
+    color: white;
+    color: rgba(255, 255, 255, 0.8);
+    font-variant: small-caps;
+    letter-spacing: .05em;
+    text-shadow: 1px 1px 0 #505050;
+    transition: all .7s ease;
+  }
+
+  /* line 172, ../scss/style.scss */
+  .banner .title span {
+    color: #87176B;
+  }
+
+  /* line 175, ../scss/style.scss */
+  .banner .tagline span {
+    color: #027762;
+  }
+
+  /* line 178, ../scss/style.scss */
+  .banner .navigation span {
+    text-shadow: 0 0 0 #fff;
+  }
+
+  /* line 181, ../scss/style.scss */
+  .banner .navigation a {
+    color: #fff;
+    text-shadow: 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569, 0 0 1px #113569;
+  }
+
+  /* line 185, ../scss/style.scss */
+  .banner span a:hover {
+    color: #113569;
   }
 }
-.timeline-border .event:nth-child(2n):after {
-  right: -5%;
-  /* reset the standard declaration I defined before*/
-  left: auto;
+/* Mobile banner */
+@media screen and (max-width: 799px) {
+  /* line 192, ../scss/style.scss */
+  .banner {
+    position: relative;
+  }
+  /* line 38, ../scss/style.scss */
+  .banner:before, .banner:after {
+    content: "";
+    display: table;
+  }
+  /* line 42, ../scss/style.scss */
+  .banner:after {
+    clear: both;
+  }
+
+  /* line 196, ../scss/style.scss */
+  .banner .line {
+    background-color: #113569;
+    color: #fff;
+    text-align: center;
+    box-shadow: -10rem 0 0 #113569, 10rem 0 0 #113569;
+  }
+
+  /* line 202, ../scss/style.scss */
+  .banner h1 {
+    font-size: 2em;
+  }
+
+  /* line 205, ../scss/style.scss */
+  .banner .tagline span {
+    font-style: italic;
+  }
+
+  /* line 209, ../scss/style.scss */
+  .banner .navigation a,
+  .banner .author a {
+    color: #87176B;
+    padding: 0 10px;
+    /*text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.4);*/
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+  }
+  /* line 218, ../scss/style.scss */
+  .banner .navigation a:hover,
+  .banner .author a:hover {
+    color: #fff;
+    text-shadow: 0 0 0 transparent;
+  }
+}
+/* portfolio */
+/* line 227, ../scss/style.scss */
+.portfolio {
+  margin: 0 auto;
+  padding-top: 80px;
+  position: relative;
+  z-index: 5;
+}
+/* line 38, ../scss/style.scss */
+.portfolio:before, .portfolio:after {
+  content: "";
+  display: table;
+}
+/* line 42, ../scss/style.scss */
+.portfolio:after {
+  clear: both;
+}
+
+/* line 234, ../scss/style.scss */
+.portfolio h1 {
+  color: #87176B;
+  text-shadow: 0 1px 1px #fff;
+}
+
+/* line 238, ../scss/style.scss */
+.portfolio .media {
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+}
+
+/* line 243, ../scss/style.scss */
+.portfolio .media:nth-child(3n+1) {
+  margin-right: 0;
+}
+
+/* line 246, ../scss/style.scss */
+.portfolio .media-figure {
+  width: 100%;
+  border: 10px double #027762;
+  transition: all 1.5s ease;
+  display: block;
+}
+
+/* line 252, ../scss/style.scss */
+.portfolio .media-figure img {
+  transition: all 1.5s ease;
+  padding: 5px 5px 0;
+}
+
+/* line 256, ../scss/style.scss */
+.portfolio .media-figure:hover {
+  background-color: #113569;
+}
+
+/* line 259, ../scss/style.scss */
+.portfolio .media-body h2 {
+  text-align: center;
+}
+
+/* line 262, ../scss/style.scss */
+.portfolio .media-body p {
+  margin-top: 0.5em;
+  padding-right: 1em;
+}
+
+/* line 266, ../scss/style.scss */
+.portfolio .date {
+  font-variant: small-caps;
+}
+
+/* Responsive stuff for the portfolio */
+@media screen and (max-width: 799px) {
+  /* line 272, ../scss/style.scss */
+  .portfolio .media {
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+
+  /* line 276, ../scss/style.scss */
+  .portfolio .media-figure {
+    float: left;
+    margin-right: 10px;
+    width: 40%;
+  }
+}
+/* Contact form */
+/* line 285, ../scss/style.scss */
+#contact fieldset {
+  border-width: 0;
+}
+
+/* shame.css */
+/* line 289, ../scss/style.scss */
+#contact select {
+  width: auto;
+  padding-right: 15px;
+}
+
+/* line 290, ../scss/style.scss */
+#contact input {
+  background-color: transparent;
+  border-color: #505050;
+  border-width: 0 0 1px 0;
+  display: inline-block;
+  font-size: inherit;
+  width: auto;
+}
+
+/* line 298, ../scss/style.scss */
+#contact textarea {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+/* line 302, ../scss/style.scss */
+#contact input[type=submit] {
+  border: solid 1px #505050;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px 3px rgba(50, 50, 50, 0.5);
+  color: #000;
+  float: right;
+}
+
+/* line 311, ../scss/style.scss */
+#contact input[type=submit]:hover,
+#contact input[type=submit]:focus,
+#contact input[type=submit]:active {
+  border-color: #87176b;
+  border-color: rgba(135, 23, 107, 0.5);
+  box-shadow: 3px 3px 3px 2px rgba(135, 23, 107, 0.2);
+  color: #87176B;
+  color: rgba(135, 23, 107, 0.9);
+  cursor: pointer;
+}
+
+/* line 320, ../scss/style.scss */
+textarea::-webkit-input-placeholder {
+  color: #87176B;
+}
+
+/* line 323, ../scss/style.scss */
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #87176B;
+}
+
+/* line 326, ../scss/style.scss */
+textarea:-ms-input-placeholder {
+  color: #87176B;
+}
+
+/* line 330, ../scss/style.scss */
+footer {
+  opacity: 0.85;
+  padding-top: 1em;
+  text-align: center;
 }
